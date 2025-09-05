@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JCJANSON COMPANY</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #2d89ef, #00aba9);
+      color: white;
+    }
+
+    /* === LOGIN PAGE === */
+    #loginPage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+    #loginPage h2 {
+      margin-bottom: 1rem;
+    }
+    #loginPage input {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      width: 250px;
+    }
+    #loginPage button {
+      background: #ffea00;
+      color: black;
+      font-weight: bold;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    #loginPage button:hover {
+      transform: scale(1.05);
+    }
+
+    /* === HOME PAGE === */
+    #homePage {
+      display: none;
+    }
+    header {
+      padding: 1.5rem;
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    nav a:hover {
+      color: #ffea00;
+    }
+    .content {
+      padding: 3rem 2rem;
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .content.active {
+      display: block;
+    }
+    .content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0,0,0,0.3);
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+    button.logout {
+      margin-top: 1rem;
+      background: red;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+    }
+    form input, form textarea {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+    }
+    form button {
+      background: #ffea00;
+      color: black;
+      font-weight: bold;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    form button:hover {
+      transform: scale(1.05);
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN PAGE -->
+  <section id="loginPage">
+    <h2>LOGIN TO JCJANSON COMPANY</h2>
+    <input type="email" id="emailInput" placeholder="enter your nickname" required>
+    <br>
+    <button onclick="login()">LOGIN</button>
+  </section>
+
+  <!-- HOME PAGE -->
+  <section id="homePage">
+    <header>
+      <h1>JCJANSON COMPANY</h1>
+      <p>my company in my family for my brotherhood</p>
+    </header>
+
+    <nav>
+      <a onclick="showPage('beranda')">home</a>
+      <a onclick="showPage('tentang')">about</a>
+      <a onclick="showPage('layanan')">servis</a>
+      <a onclick="showPage('formulir')">form</a>
+      <a onclick="showPage('kontak')">contact</a>
+    </nav>
+
+    <!-- Halaman Beranda -->
+    <div id="beranda" class="content">
+      <h2>welcome for, <span id="userEmail"></span>!</h2>
+      <p>welcome my brother this is for you,me and his family .</p>
+      <button class="logout" onclick="logout()">logout</button>
+    </div>
+
+    <!-- Halaman Tentang -->
+    <div id="tentang" class="content">
+      <h2>about company</h2>
+      <p>We really appreciate your presence here. We hope you can be more active in participating based on your mission..</p>
+    </div>
+
+    <!-- Halaman Layanan -->
+    <div id="layanan" class="content">
+      <h2>Layanan Kami</h2>
+      <ul style="list-style:none; padding:0;">
+        <li>✅ report a problem to wolfforge</li>
+        <li>✅ Bill and compensition pay with dollars of jcjanson</li>
+        <li>✅ buy,sell and auction contact with admin 1
+         
+        </li>
+        <li>✅ your safety is so great and your are in my protection </li>
+      </ul>
+    </div> 
+
+
+    <!-- Halaman Formulir -->
+    <div id="formulir" class="content">
+      <h2>form of login
+      </h2>
+      <form action="https://formspree.io/f/yourFormID" method="POST">
+        <label>names</label>
+        <input type="text" name="nama" required>
+        
+        <label>Email</label>
+        <input type="email" name="email" required>
+        
+        <label>number of phone</label>
+        <input type="tel" name="telepon" required>
+        
+        <label>massegent</label>
+        <textarea name="pesan" rows="4" required></textarea>
+        
+        <button type="submit">sumbit</button>
+      </form>
+    </div>
+
+    <!-- Halaman Kontak -->
+    <div id="kontak" class="content">
+      <h2>contact us</h2>
+      <p>Email: support jcjansoncompany001@gmail.com</p>
+      <p>Telp: +62 899 2993 977</p>
+      <p>address: tasikmalaya,indonesian</p>
+    </div>
+
+    <footer>
+      &copy;2014 jcjanson company of family
+    </footer>
+  </section>
+
+  <script>
+    function login() {
+      const email = document.getElementById("emailInput").value;
+      if (email.trim() === "") {
+        alert("Harap isi email terlebih dahulu!");
+        return;
+      }
+      localStorage.setItem("userEmail", email);
+
+      document.getElementById("loginPage").style.display = "none";
+      document.getElementById("homePage").style.display = "block";
+      document.getElementById("userEmail").textContent = email;
+      showPage("beranda");
+    }
+
+    function logout() {
+      localStorage.removeItem("userEmail");
+      document.getElementById("homePage").style.display = "none";
+      document.getElementById("loginPage").style.display = "flex";
+    }
+
+    function showPage(pageId) {
+      const pages = document.querySelectorAll(".content");
+      pages.forEach(p => p.classList.remove("active"));
+      document.getElementById(pageId).classList.add("active");
+    }
+
+    window.onload = () => {
+      const email = localStorage.getItem("userEmail");
+      if (email) {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("homePage").style.display = "block";
+        document.getElementById("userEmail").textContent = email;
+        showPage("beranda");
+      }
+    };
+  </script>
+</body>
+</html>
